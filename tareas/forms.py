@@ -4,6 +4,13 @@ from django.utils import timezone
 
 class TareaForm(forms.ModelForm):
 
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop("user", None)
+        super().__init__(*args, **kwargs)
+
+        if user:
+            self.fields["categoria"].queryset = Categoria.objects.filter(user=user)
+
     class Meta:
         model = Tarea
         fields = ["titulo", "descripcion", "fecha_vencimiento", "prioridad", "categoria", "estado"]

@@ -64,6 +64,11 @@ class CrearTareaView(LoginRequiredMixin, CreateView):
 
         return initial
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         messages.success(self.request, "Tarea creada correctamente.")

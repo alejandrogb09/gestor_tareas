@@ -47,3 +47,9 @@ class Tarea(models.Model):
 
     def __str__(self):
         return self.titulo
+    
+    def clean(self):
+        super().clean()
+
+        if self.categoria and self.categoria.user != self.user:
+            raise ValidationError("Categoría inválida para este usuario")

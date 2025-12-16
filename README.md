@@ -83,3 +83,11 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
+
+---
+
+## 👤 Autor
+
+Alejandro Gómez Berrio
+Estudiante | Backend Developer Jr
+Interesado en desarrollo web, arquitectura de software y sistemas escalables.

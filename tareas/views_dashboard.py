@@ -99,8 +99,9 @@ class DashboardView(LoginRequiredMixin, TemplateView):
             labels_prod.append(item["dia"].strftime("%d %b"))
             data_prod.append(item["total"])
 
-            context["prod_labels"] = labels_prod
-            context["prod_data"] = data_prod
+        context["prod_labels"] = labels_prod
+        context["prod_data"] = data_prod
+
 
         mensaje_productividad = "Sin datos suficientes"
 

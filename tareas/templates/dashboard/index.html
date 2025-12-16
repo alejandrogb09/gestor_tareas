@@ -63,11 +63,15 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
     const labels = {{ chart_labels|safe }};
     const data = {{ chart_data|safe }};
 
-    const ctx = document.getElementById('prioridadesChart').getContext('2d');
+    const ctxProd = document
+    .getElementById('productividadChart')
+    .getContext('2d');
+
 
     new Chart(ctx, {
         type: 'doughnut',
@@ -75,6 +79,11 @@
             labels: labels,
             datasets: [{
                 data: data,
+                backgroundColor: [
+                    '#0d6efd',
+                    '#ffc107',
+                    '#dc3545'
+                ]
             }]
         },
         options: {
@@ -86,45 +95,8 @@
             }
         }
     });
-
-    console.log(labels, data);
-
-    const prodLabels = {{ prod_labels|safe }};
-    const prodData = {{ prod_data|safe }};
-
-    const ctxProd = document
-        .getElement.getElementById('productividadChart')
-        .getContext('2d');
-
-    new Chart(ctxProd, {
-        type: 'bar',
-        data: {
-            labels: prod_labels,
-            datasets: [{
-                label: 'Tareas completadas',
-                data: prodData
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        precision: 0
-                    }
-                }
-            }
-        }
-    });
-
 </script>
+
 <p class="mt-3 fw-semibold text-muted">
     {{ mensaje_productividad }}
 </p>

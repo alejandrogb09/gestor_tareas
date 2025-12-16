@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    <i class="fa-solid fa-tags me-2"></i> Categorías
+</h2>
+
+<a href="{% url 'crear_categoria' %}" class="btn btn-primary mb-3">
+    <i class="fa-solid fa-plus me-1"></i> Añadir categoría
+</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                <i class="fa-solid fa-tag me-1"></i> Nombre
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for categoria in categorias %}
+        <tr>
+            <td>{{ categoria.nombre }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td>
+                <i class="fa-regular fa-folder-open me-1"></i> No hay categorías
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
